@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Financial Assistant</title>
+    <link rel="stylesheet" href="/static/style.css" />
+  </head>
+  <body>
+    <h1>Financial Assistant (FastAPI)</h1>
+
+    <div class="card">
+      <div class="row">
+        <input id="csvFile" type="file" accept=".csv" />
+        <label>
+          <input id="resetDb" type="checkbox" />
+          Reset DB before run
+        </label>
+        <button id="runBtn" class="primary">Upload & Run</button>
+      </div>
+
+      <p id="status"></p>
+      <p class="error" id="error"></p>
+    </div>
+
+    <div class="card">
+      <h2>Advice</h2>
+      <div id="advice"></div>
+    </div>
+
+    <div class="card">
+      <h2>Summary (JSON)</h2>
+      <pre id="output">{}</pre>
+    </div>
+
+    <script src="/static/script.js" defer></script>
+  </body>
+</html>
