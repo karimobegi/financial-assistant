@@ -6,20 +6,17 @@ def category_advice(results):
     high_share = cat["high_share_categories"]                 
     total_by_category = cat["total_by_category"]              
     
-   
     if not high_share.empty:
         high_share_sorted = high_share.sort_values(ascending=False)
 
         parts = [f"{name} ({pct:.1f}%)" for name, pct in high_share_sorted.items()]
         advice.append("High-spend categories: " + ", ".join(parts) + ".")
 
-    
     top_cat = percent_by_category.idxmax()
     top_pct = float(percent_by_category.loc[top_cat])
     if top_pct > 40:
         advice.append(f"Spending is highly concentrated in {top_cat} ({top_pct:.1f}%).")
 
-    
     top_total_cat = total_by_category.idxmax()
     top_total_val = float(total_by_category.loc[top_total_cat])
     advice.append(f"Top spending category by total: {top_total_cat} ({top_total_val:.2f}).")
