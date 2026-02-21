@@ -109,6 +109,9 @@ def run_analysis(path="data/finance.db"):
         )
     }
     return results
+
+
+
 if __name__ == "__main__":
     analysis_results = run_analysis()
 

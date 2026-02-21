@@ -8,7 +8,6 @@ def category_advice(results):
     
    
     if not high_share.empty:
-        #Sort so biggest categories appear first
         high_share_sorted = high_share.sort_values(ascending=False)
 
         parts = [f"{name} ({pct:.1f}%)" for name, pct in high_share_sorted.items()]
@@ -56,7 +55,6 @@ def outlier_advice(results):
             )
 
     else:
-        #no outliers
         advice.append("No unusually large transactions were detected.")
 
     return advice
@@ -86,7 +84,7 @@ def cashflow_advice(results):
     else:
         advice.append("Overall, your income and expenses balanced out.")
 
-    #Best and worst months
+
     best_month = net_by_month.idxmax()
     best_value = net_by_month.loc[best_month]
 
@@ -102,14 +100,12 @@ def cashflow_advice(results):
             f"You overspent the most in {worst_month} ({worst_value:.2f})."
         )
 
-    #Overspending warning
     negative_months = net_by_month[net_by_month < 0]
     if not negative_months.empty:
         advice.append(
             f"You had {len(negative_months)} month(s) where expenses exceeded income."
         )
 
-    #Month-over-month trend (if possible)
     if len(net_by_month) >= 2:
         last_change = net_by_month.iloc[-1] - net_by_month.iloc[-2]
 
@@ -120,7 +116,6 @@ def cashflow_advice(results):
         else:
             advice.append("Your net savings remained stable compared to the previous month.")
 
-    #Consistency signal
     if (net_by_month > 0).all():
         advice.append("You consistently saved money every month.")
     elif (net_by_month <= 0).all():
