@@ -21,7 +21,7 @@ def category_analysis(df):
         }
 
     cat_group = expense_df.groupby("category")
-
+    #The purpose of this function will be used in generation of charts
     total_by_cat = cat_group["abs_amount"].sum()
     avg_by_cat = cat_group["abs_amount"].mean()
     count_by_cat = cat_group.size()
@@ -73,6 +73,7 @@ def outlier_analysis(df):
         "large_transactions": large_transactions,
         "num_large_transactions": len(large_transactions),
     }
+#This function will be used for charts later on
 def cashflow_analysis(df):
     monthly = df.groupby(['month', 'category'])['amount'].sum().unstack(fill_value=0)
     income = monthly.get('Income', 0)
@@ -109,7 +110,6 @@ def run_analysis(path="data/finance.db"):
         )
     }
     return results
-
 
 
 if __name__ == "__main__":
