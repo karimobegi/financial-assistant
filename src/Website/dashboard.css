@@ -1,0 +1,24 @@
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+.grid {
+  height: 100vh;                 /* fill the screen */
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* 2 columns */
+  grid-template-rows: 1fr 1fr;    /* 2 rows */
+  gap: 12px;                      /* space between charts */
+  padding: 12px;
+  box-sizing: border-box;
+}
+
+.panel {
+  position: relative;
+}
+
+.panel canvas {
+  width: 100% !important;
+  height: 100% !important;
+  display: block;
+}
