@@ -9,12 +9,24 @@ from pathlib import Path
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse, RedirectResponse
 from fastapi.staticfiles import StaticFiles
+from starlette.staticfiles import StaticFiles as StarletteStaticFiles
 import os
 UPLOAD_DIR = Path("data/uploads")
 UPLOAD_DIR.mkdir(parents=True, exist_ok=True)
 
 app = FastAPI()
-app.mount("/static", StaticFiles(directory="src/Website"), name="static")
+class NoCacheStaticFiles(StarletteStaticFiles):
+    async def __call__(self, scope, receive, send):
+        async def send_with_no_cache(message):
+            if message["type"] == "http.response.start":
+                headers = dict(message.get("headers", []))
+                headers[b"cache-control"] = b"no-cache, no-store, must-revalidate"
+                headers[b"pragma"] = b"no-cache"
+                message["headers"] = list(headers.items())
+            await send(message)
+        await super().__call__(scope, receive, send_with_no_cache)
+
+app.mount("/static", NoCacheStaticFiles(directory="src/Website"), name="static")
 
 
 @app.get("/")
@@ -70,7 +82,7 @@ def analysis(db_path: str = "data/finance.db"):
 
 @app.get("/analysis/summary")
 def summary(db_path: str = "data/finance.db"):
-    results = make_json_safe(run_analysis(db_path))
+    results = make_json_safe(run_analysis(db_path)) or {}
     monthly = []
     category_spend = []
     top_merchants = []

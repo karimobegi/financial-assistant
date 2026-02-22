@@ -5,11 +5,11 @@ let chart3 = null;
 let chart4 = null;
 function monthlyChart(summary){
     const monthly = summary.monthly || [];
-
-  if (monthly.length === 0) {
-    // show empty state text somewhere
-    return;
-  }
+  if (!summary.monthly || summary.monthly.length === 0) {
+  document.getElementById("dashboardContainer").innerHTML =
+    "<p>No data yet. Please upload a CSV file.</p>";
+  return;
+}
    if (chart1) chart1.destroy();
     chart1 = new Chart(document.getElementById("chart1"), {
     type: 'bar',
@@ -40,9 +40,11 @@ function monthlyChart(summary){
 
 function categoryChart(summary){
     const category = summary.category_spend || [];
-    if (category.length === 0){
-        return;
-    }
+    if (!summary.category_spend || summary.category_spend.length === 0) {
+  document.getElementById("dashboardContainer").innerHTML =
+    "<p>No data yet. Please upload a CSV file.</p>";
+  return;
+}
     if (chart2) chart2.destroy();
     chart2 = new Chart(document.getElementById("chart2"), {
     type: 'doughnut',
@@ -61,9 +63,11 @@ function categoryChart(summary){
 
 function merchantChart(summary){
     const merchant = summary.top_merchants;
-    if (merchant.length === 0){
-        return;
-    }
+    if (!summary.top_merchants || summary.top_merchants.length === 0) {
+  document.getElementById("dashboardContainer").innerHTML =
+    "<p>No data yet. Please upload a CSV file.</p>";
+  return;
+}
     if (chart3) chart3.destroy();
     chart3 = new Chart(document.getElementById("chart3"), {
     type: 'bar',
@@ -83,9 +87,11 @@ function merchantChart(summary){
 
 function transactionChart(summary){
     const transactions = summary.large_transactions;
-    if (transactions.length === 0){
-        return;
-    }
+    if (!summary.large_transactions || summary.large_transactions.length === 0) {
+  document.getElementById("dashboardContainer").innerHTML =
+    "<p>No data yet. Please upload a CSV file.</p>";
+  return;
+}
     if (chart4) chart4.destroy();
     chart4 = new Chart(document.getElementById("chart4"), {
     type: 'bar',

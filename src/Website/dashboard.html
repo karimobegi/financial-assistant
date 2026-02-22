@@ -1,19 +1,30 @@
 <!DOCTYPE html>
-<html lang = "en">
-<head>
-<title>Dashboards</title>
-<link rel="stylesheet" href="/static/dashboard.css"/>
-</head>
-<body>
-<h1>Dashboards</h1>
-<div class="grid">
-  <div class="panel"><canvas id="chart1"></canvas></div>
-  <div class="panel"><canvas id="chart2"></canvas></div>
-  <div class="panel"><canvas id="chart3"></canvas></div>
-  <div class="panel"><canvas id="chart4"></canvas></div>
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <script src = "/static/dashboard.js" defer></script>
-</div>
-</body>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard — Financial Assistant</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:wght@300;400;500&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/dashboard.css"/>
+  </head>
+  <body>
 
+    <div class="topbar">
+      <h1>Dashboard</h1>
+      <a href="/app" class="button">← Back to Main</a>
+    </div>
+
+    <div class="grid">
+      <div class="panel"><canvas id="chart1"></canvas></div>
+      <div class="panel"><canvas id="chart2"></canvas></div>
+      <div class="panel"><canvas id="chart3"></canvas></div>
+      <div class="panel"><canvas id="chart4"></canvas></div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="/static/dashboard.js" defer></script>
+
+  </body>
 </html>

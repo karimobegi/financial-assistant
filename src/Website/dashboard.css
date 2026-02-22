@@ -1,24 +1,165 @@
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:wght@300;400;500&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap');
+
+/* ── Variables (shared with main page) ─────────────────── */
+:root {
+  --bg:          #f4f6fb;
+  --surface:     #ffffff;
+  --surface2:    #eef1f8;
+  --border:      rgba(79, 110, 220, 0.13);
+  --border-hi:   rgba(79, 110, 220, 0.35);
+  --accent:      #3a5fd9;
+  --accent-hi:   #5578f0;
+  --accent-glow: rgba(58, 95, 217, 0.18);
+  --accent-soft: rgba(58, 95, 217, 0.07);
+  --text:        #1a2040;
+  --muted:       #7a85a8;
+}
+
+/* ── Reset & Base ──────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
 html, body {
   height: 100%;
-  margin: 0;
 }
 
-.grid {
-  height: 100vh;                 /* fill the screen */
-  display: grid;
-  grid-template-columns: 1fr 1fr; /* 2 columns */
-  grid-template-rows: 1fr 1fr;    /* 2 rows */
-  gap: 12px;                      /* space between charts */
-  padding: 12px;
-  box-sizing: border-box;
-}
-
-.panel {
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  padding: 28px;
   position: relative;
+}
+
+/* Dot-grid background (matches index) */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: radial-gradient(circle, rgba(58,95,217,0.07) 1px, transparent 1px);
+  background-size: 28px 28px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+body > * { position: relative; z-index: 1; }
+
+/* ── Top bar ───────────────────────────────────────────── */
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+h1 {
+  font-family: 'Syne', sans-serif;
+  font-weight: 800;
+  font-size: clamp(1.3rem, 3vw, 1.9rem);
+  letter-spacing: -0.03em;
+  color: var(--text);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+h1::before {
+  content: '';
+  display: block;
+  width: 5px;
+  height: 1.6em;
+  background: linear-gradient(180deg, var(--accent) 0%, var(--accent-hi) 100%);
+  border-radius: 3px;
+  flex-shrink: 0;
+  box-shadow: 0 0 12px var(--accent-glow);
+}
+
+/* ── Back button ───────────────────────────────────────── */
+a.button {
+  font-family: 'Syne', sans-serif;
+  font-weight: 600;
+  font-size: 0.85rem;
+  letter-spacing: 0.04em;
+  padding: 9px 18px;
+  border-radius: 10px;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  transition: transform 0.15s ease, box-shadow 0.2s ease, background 0.2s;
+  white-space: nowrap;
+  background: var(--surface);
+  color: var(--accent);
+  border: 1.5px solid var(--border-hi);
+  box-shadow: 0 2px 8px rgba(58,95,217,0.07);
+}
+
+a.button:hover {
+  background: var(--accent-soft);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(58,95,217,0.12);
+}
+
+/* ── Chart grid ────────────────────────────────────────── */
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 16px;
+  height: calc(100vh - 110px);
+}
+
+/* ── Chart panels ──────────────────────────────────────── */
+.panel {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 20px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 2px 12px rgba(58,95,217,0.05);
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+  animation: fadeUp 0.4s ease both;
+}
+
+.panel:nth-child(1) { animation-delay: 0.05s; }
+.panel:nth-child(2) { animation-delay: 0.10s; }
+.panel:nth-child(3) { animation-delay: 0.15s; }
+.panel:nth-child(4) { animation-delay: 0.20s; }
+
+/* Top shimmer line */
+.panel::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(79,110,220,0.22), transparent);
+}
+
+.panel:hover {
+  border-color: var(--border-hi);
+  box-shadow: 0 6px 28px rgba(58,95,217,0.1);
 }
 
 .panel canvas {
   width: 100% !important;
   height: 100% !important;
   display: block;
+}
+
+/* ── Fade-in animation ─────────────────────────────────── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Responsive ────────────────────────────────────────── */
+@media (max-width: 640px) {
+  body { padding: 16px; }
+  .grid {
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(4, 260px);
+    height: auto;
+  }
 }
