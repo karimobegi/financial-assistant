@@ -1,5 +1,6 @@
 import pandas as pd
 import sqlite3
+from datetime import datetime, timedelta
 def load_data(path = 'data/finance.db'):
     conn = sqlite3.connect(path)
     df = pd.read_sql_query("SELECT * FROM transactions", conn)
@@ -94,8 +95,12 @@ def cashflow_analysis(df):
         "total_net_savings": net_savings.sum(),
         "expectation": future_expected
     }
-def run_analysis(path="data/finance.db"):
+def run_analysis(path = "data/finance.db", range_days: int | None = None):
     df = load_data(path)
+
+    if range_days is not None:
+        cutoff = pd.Timestamp(datetime.now() - timedelta(days = range_days))
+        df = df[df["date"] >= cutoff]
     expense_df = df[df['category'] != 'Income']
     results = {
     "cashflow": cashflow_analysis(df),

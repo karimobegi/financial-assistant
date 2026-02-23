@@ -1,4 +1,5 @@
 API_BASE = window.location.origin;
+let currentPeriod = "all";
 let chart1 = null;
 let chart2 = null;
 let chart3 = null;

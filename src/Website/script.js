@@ -6,7 +6,7 @@ const runBtn = document.getElementById("runBtn");
 
 const statusEl = document.getElementById("status");
 const errorEl = document.getElementById("error");
-const outputEl = document.getElementById("output");
+//const outputEl = document.getElementById("output");
 const adviceEl = document.getElementById("advice");
 
 function setStatus(msg, ok = false) {
@@ -69,7 +69,7 @@ runBtn.addEventListener("click", async () => {
 
     setStatus("Done ✅", true);
 
-    outputEl.textContent = JSON.stringify(data, null, 2);
+    //outputEl.textContent = JSON.stringify(data, null, 2);
     renderAdvice(data.advice);
   } catch (err) {
     setError(err.message);
