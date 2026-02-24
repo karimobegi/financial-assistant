@@ -148,6 +148,44 @@ a.button:hover {
   display: block;
 }
 
+/* ── Range controls ────────────────────────────────────── */
+.range-controls {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.rangeBtn {
+  font-family: 'Syne', sans-serif;
+  font-weight: 600;
+  font-size: 0.85rem;
+  letter-spacing: 0.04em;
+  padding: 10px 20px;
+  border-radius: 10px;
+  border: 1.5px solid var(--border-hi);
+  background: var(--surface);
+  color: var(--muted);
+  cursor: pointer;
+  transition: all 0.18s ease;
+  box-shadow: 0 2px 6px rgba(58,95,217,0.05);
+}
+
+.rangeBtn:hover {
+  background: var(--accent-soft);
+  color: var(--accent);
+  border-color: var(--accent);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 14px rgba(58,95,217,0.12);
+}
+
+.rangeBtn.active {
+  background: linear-gradient(135deg, var(--accent) 0%, var(--accent-hi) 100%);
+  color: #fff;
+  border-color: transparent;
+  box-shadow: 0 4px 16px var(--accent-glow);
+}
+
 /* ── Fade-in animation ─────────────────────────────────── */
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(12px); }
