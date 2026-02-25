@@ -139,7 +139,6 @@ async function loadDashboard() {
         
         if (currentPeriod !== "all") {
       url += `?period=${encodeURIComponent(currentPeriod)}`;
-      console.log("url is not all")
     }
     const res = await fetch(url);
 
@@ -148,7 +147,6 @@ async function loadDashboard() {
         }
 
         const summary = await res.json();
-        console.log(summary);
         renderDashboard(summary);
 
     } catch (error) {
