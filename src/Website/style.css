@@ -1,6 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:wght@300;400;500&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap');
 
-/* ── Variables ─────────────────────────────────────────── */
 :root {
   --bg:          #f4f6fb;
   --surface:     #ffffff;
@@ -35,7 +34,7 @@ body {
   position: relative;
 }
 
-/* Subtle dot-grid background */
+
 body::before {
   content: '';
   position: fixed;
@@ -46,7 +45,7 @@ body::before {
   z-index: 0;
 }
 
-/* Top-left soft glow */
+
 body::after {
   content: '';
   position: fixed;
@@ -61,7 +60,7 @@ body::after {
 
 body > * { position: relative; z-index: 1; }
 
-/* ── Header ────────────────────────────────────────────── */
+
 h1 {
   font-family: 'Syne', sans-serif;
   font-weight: 800;
@@ -96,7 +95,7 @@ h2 {
   margin-bottom: 14px;
 }
 
-/* ── Cards ─────────────────────────────────────────────── */
+
 .card {
   background: var(--surface);
   border: 1px solid var(--border);
@@ -122,7 +121,7 @@ h2 {
   box-shadow: 0 6px 30px rgba(58,95,217,0.1);
 }
 
-/* ── Row / Upload Controls ─────────────────────────────── */
+
 .row {
   display: flex;
   gap: 12px;
@@ -130,7 +129,7 @@ h2 {
   flex-wrap: wrap;
 }
 
-/* File input */
+
 input[type="file"] {
   font-family: 'DM Sans', sans-serif;
   font-size: 0.88rem;
@@ -251,7 +250,7 @@ a.button.primary:active {
   transform: translateY(0);
 }
 
-/* Secondary / ghost button */
+
 a.button.secondary,
 button.secondary {
   background: var(--surface);
@@ -274,14 +273,14 @@ button:disabled {
   box-shadow: none !important;
 }
 
-/* ── Nav row (Dashboard button) ───────────────────────── */
+
 .nav-row {
   display: flex;
   justify-content: flex-end;
   margin-top: 22px;
 }
 
-/* ── Status messages ───────────────────────────────────── */
+
 #status {
   font-size: 0.88rem;
   color: var(--muted);
@@ -303,7 +302,6 @@ button:disabled {
   font-weight: 500;
 }
 
-/* ── Advice area ───────────────────────────────────────── */
 #advice {
   font-size: 0.95rem;
   line-height: 1.8;
@@ -311,7 +309,7 @@ button:disabled {
   min-height: 40px;
 }
 
-/* ── JSON pre block ────────────────────────────────────── */
+
 pre {
   font-family: 'DM Mono', monospace;
   font-size: 0.82rem;
@@ -332,7 +330,7 @@ pre::-webkit-scrollbar { width: 6px; height: 6px; }
 pre::-webkit-scrollbar-track { background: transparent; }
 pre::-webkit-scrollbar-thumb { background: var(--border-hi); border-radius: 3px; }
 
-/* ── Fade-in animation ─────────────────────────────────── */
+
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(14px); }
   to   { opacity: 1; transform: translateY(0); }
@@ -346,7 +344,7 @@ h1       { animation: fadeUp 0.4s ease both; }
 .card:nth-of-type(2) { animation-delay: 0.12s; }
 .card:nth-of-type(3) { animation-delay: 0.18s; }
 
-/* ── Responsive ────────────────────────────────────────── */
+
 @media (max-width: 600px) {
   body { padding: 28px 16px 60px; }
   .card { padding: 18px 20px; }

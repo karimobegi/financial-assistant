@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:wght@300;400;500&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap');
 
-/* ── Variables (shared with main page) ─────────────────── */
+
 :root {
   --bg:          #f4f6fb;
   --surface:     #ffffff;
@@ -15,7 +15,7 @@
   --muted:       #7a85a8;
 }
 
-/* ── Reset & Base ──────────────────────────────────────── */
+
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 html, body {
@@ -30,7 +30,7 @@ body {
   position: relative;
 }
 
-/* Dot-grid background (matches index) */
+
 body::before {
   content: '';
   position: fixed;
@@ -43,7 +43,7 @@ body::before {
 
 body > * { position: relative; z-index: 1; }
 
-/* ── Top bar ───────────────────────────────────────────── */
+
 .topbar {
   display: flex;
   align-items: center;
@@ -75,7 +75,7 @@ h1::before {
   box-shadow: 0 0 12px var(--accent-glow);
 }
 
-/* ── Back button ───────────────────────────────────────── */
+
 a.button {
   font-family: 'Syne', sans-serif;
   font-weight: 600;
@@ -101,7 +101,7 @@ a.button:hover {
   box-shadow: 0 6px 16px rgba(58,95,217,0.12);
 }
 
-/* ── Chart grid ────────────────────────────────────────── */
+
 .grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -110,7 +110,7 @@ a.button:hover {
   height: calc(100vh - 110px);
 }
 
-/* ── Chart panels ──────────────────────────────────────── */
+
 .panel {
   background: var(--surface);
   border: 1px solid var(--border);
@@ -128,7 +128,7 @@ a.button:hover {
 .panel:nth-child(3) { animation-delay: 0.15s; }
 .panel:nth-child(4) { animation-delay: 0.20s; }
 
-/* Top shimmer line */
+
 .panel::before {
   content: '';
   position: absolute;
@@ -148,7 +148,7 @@ a.button:hover {
   display: block;
 }
 
-/* ── Range controls ────────────────────────────────────── */
+
 .range-controls {
   display: flex;
   gap: 8px;
@@ -186,13 +186,13 @@ a.button:hover {
   box-shadow: 0 4px 16px var(--accent-glow);
 }
 
-/* ── Fade-in animation ─────────────────────────────────── */
+
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(12px); }
   to   { opacity: 1; transform: translateY(0); }
 }
 
-/* ── Responsive ────────────────────────────────────────── */
+
 @media (max-width: 640px) {
   body { padding: 16px; }
   .grid {
