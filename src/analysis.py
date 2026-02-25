@@ -130,6 +130,3 @@ def run_analysis(path = "data/finance.db", range_days: int | None = None):
 
 if __name__ == "__main__":
     analysis_results = run_analysis()
-
-
-

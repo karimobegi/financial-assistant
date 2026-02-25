@@ -80,6 +80,7 @@ def analysis(db_path: str = "data/finance.db"):
     results = run_analysis(db_path)
     return make_json_safe(results)
 
+
 @app.get("/analysis/summary")
 def summary(db_path: str = "data/finance.db", period: str = "all"):
     range_map = {"30d": 30, "90d": 90, "365d": 365, "all": None}
@@ -92,6 +93,7 @@ def summary(db_path: str = "data/finance.db", period: str = "all"):
     cashflow = results.get("cashflow", {})
     income_by_month = cashflow.get("income_by_month", {})
     expenses_by_month = cashflow.get("expenses_by_month", {})
+
     for i in sorted(income_by_month.keys()):
         income = float(income_by_month.get(i, 0))
         expenses = float(abs(expenses_by_month.get(i, 0)))

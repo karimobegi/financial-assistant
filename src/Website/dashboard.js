@@ -149,7 +149,6 @@ async function loadDashboard() {
 
         const summary = await res.json();
         console.log(summary);
-        //destroyAllCharts();
         renderDashboard(summary);
 
     } catch (error) {
