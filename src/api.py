@@ -81,9 +81,9 @@ def analysis(db_path: str = "data/finance.db"):
     return make_json_safe(results)
 
 @app.get("/analysis/summary")
-def summary(db_path: str = "data/finance.db", range: str = "all"):
+def summary(db_path: str = "data/finance.db", period: str = "all"):
     range_map = {"30d": 30, "90d": 90, "365d": 365, "all": None}
-    days = range_map.get(range, None)
+    days = range_map.get(period, None)
     results = make_json_safe(run_analysis(db_path, range_days = days)) or {}
     monthly = []
     category_spend = []

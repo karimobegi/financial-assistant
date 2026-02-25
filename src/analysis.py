@@ -88,6 +88,16 @@ def cashflow_analysis(df):
         total_net * remaining_months / num_months
         if num_months > 0 else 0
     )
+
+    if net_savings.empty:
+        return {
+            "income_by_month": {},
+            "expenses_by_month": {},
+            "net_savings_by_month": {},
+            "total_net_savings": 0.0,
+            "expectation": 0.0,
+        }
+    
     return {
         "income_by_month": income,
         "expenses_by_month": expenses,
@@ -98,8 +108,9 @@ def cashflow_analysis(df):
 def run_analysis(path = "data/finance.db", range_days: int | None = None):
     df = load_data(path)
 
-    if range_days is not None:
-        cutoff = pd.Timestamp(datetime.now() - timedelta(days = range_days))
+    if range_days is not None and not df.empty:
+        latest_date = df["date"].max()
+        cutoff = latest_date - pd.Timedelta(days=range_days)
         df = df[df["date"] >= cutoff]
     expense_df = df[df['category'] != 'Income']
     results = {
