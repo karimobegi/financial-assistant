@@ -1,9 +1,25 @@
 API_BASE = window.location.origin;
+
 let currentPeriod = "all";
 let chart1 = null;
 let chart2 = null;
 let chart3 = null;
 let chart4 = null;
+
+document.addEventListener("DOMContentLoaded", () => {
+  document.getElementById("btnAll").addEventListener("click", () => setPeriod("all"));
+  document.getElementById("btn30").addEventListener("click", () => setPeriod("30d"));
+  document.getElementById("btn90").addEventListener("click", () => setPeriod("90d"));
+  document.getElementById("btn365").addEventListener("click", () => setPeriod("365d"));
+
+  loadDashboard(); 
+});
+
+function setPeriod(period) {
+  currentPeriod = period;
+  loadDashboard();
+}
+
 function monthlyChart(summary){
     const monthly = summary.monthly || [];
   if (!summary.monthly || summary.monthly.length === 0) {
@@ -119,13 +135,19 @@ function renderDashboard(summary){
 
 async function loadDashboard() {
     try {
-        const res = await fetch(`${API_BASE}/analysis/summary`);
+        let url = `${API_BASE}/analysis/summary`;
+        
+        if (currentPeriod !== "all") {
+      url += `?period=${encodeURIComponent(currentPeriod)}`;
+    }
+    const res = await fetch(url);
 
         if (!res.ok) {
             throw new Error("Failed to load dashboard");
         }
 
         const summary = await res.json();
+        //destroyAllCharts();
         renderDashboard(summary);
 
     } catch (error) {
