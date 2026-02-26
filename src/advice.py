@@ -31,13 +31,10 @@ def outlier_advice(results):
     large_df = out["large_transactions"]
     mean_amount = float(out["mean_amount"])
 
-    #any large transactions exist
+
     if num_large > 0:
         advice.append(f"You had {num_large} unusually large transaction(s).")
-
-        #highlight the largest outlier
         largest = float(large_df["abs_amount"].max())
-
         if largest > 3 * mean_amount:
             largest_row = large_df.loc[
                 large_df["abs_amount"] == largest
@@ -69,7 +66,7 @@ def cashflow_advice(results):
         advice.append("Not enough data to assess savings over time.")
         return advice
 
-    #Overall savings health
+
     if total_net > 0:
         advice.append(
             f"Overall, you saved money during the analyzed period (+{total_net:.2f})."
