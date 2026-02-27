@@ -11,7 +11,6 @@ document.addEventListener("DOMContentLoaded", () => {
   document.getElementById("btn30").addEventListener("click", () => setPeriod("30d"));
   document.getElementById("btn90").addEventListener("click", () => setPeriod("90d"));
   document.getElementById("btn365").addEventListener("click", () => setPeriod("365d"));
-
   loadDashboard(); 
 });
 
@@ -130,7 +129,6 @@ function renderDashboard(summary){
     categoryChart(summary);
     merchantChart(summary);
     transactionChart(summary);
-
 }
 
 async function loadDashboard() {

@@ -67,13 +67,13 @@ runBtn.addEventListener("click", async () => {
       throw new Error(`API error (${res.status}): ${detail}`);
     }
 
-    setStatus("Done", true);
+    setStatus("Done ✅", true);
 
     //outputEl.textContent = JSON.stringify(data, null, 2);
     renderAdvice(data.advice);
   } catch (err) {
     setError(err.message);
-    setStatus("Failed");
+    setStatus("Failed ❌");
   } finally {
     runBtn.disabled = false;
   }
