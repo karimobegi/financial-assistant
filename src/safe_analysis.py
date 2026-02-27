@@ -1,4 +1,3 @@
-import pandas as pd
 import math
 def _clean_number(x):
     try:
