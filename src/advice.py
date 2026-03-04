@@ -145,7 +145,6 @@ def trend_advice(results):
         advice.append(f"Spending decreased compared to the previous month ({last_change:.2f}).")
     else:
         advice.append("Spending was stable compared to the previous month.")
-
     return advice
 def generate_advice(results):
     advice = []
