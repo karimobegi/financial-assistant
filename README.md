@@ -43,10 +43,11 @@ The goal of the project is to demonstrate:
 
 ### Frontend
 
-- Simple HTML / CSS / JavaScript interface
+- HTML / CSS / JavaScript Two-Page website
 - CSV upload
 - One-click pipeline execution
 - Displays analysis results and advice
+- dashboard display based on different time ranges..
 
 ### Deployment
 
@@ -61,19 +62,23 @@ The goal of the project is to demonstrate:
 ```text
 financial-assistant-project/
 ├── src/
-│   ├── api.py              # FastAPI application
-│   ├── ingest.py           # CSV ingestion & cleaning
-│   ├── persist.py          # SQLite persistence
-│   ├── analysis.py         # Pandas-based analysis
-│   ├── safe_analysis.py    # JSON-safe serialization
-│   ├── advice.py           # Rule-based advice
-│   ├── db.py               # DB setup, stats, reset
+│   ├── api.py
+│   ├── ingest.py
+│   ├── persist.py
+│   ├── analysis.py
+│   ├── safe_analysis.py
+│   ├── advice.py
+│   ├── db.py
 │   └── Website/
-│       ├── index.html      # Frontend UI
+│       ├── index.html
 │       ├── style.css
-│       └── script.js
+│       ├── script.js
+│       ├── dashboard.html
+│       ├── dashboard.css
+│       └── dashboard.js
+│
 ├── data/
-│   ├── uploads/            # Uploaded CSVs (gitignored)
+│   ├── uploads/
 │   ├── clean_transactions.csv
 │   └── finance.db
 ├── requirements.txt
@@ -125,6 +130,7 @@ financial-assistant-project/
 - Lightweight HTML / CSS / JavaScript UI
 - Allows CSV upload and DB reset
 - Displays analysis output and advice
+- Displays charts and time range etiquettes that allow users to choose the range of the data display
 
 ### Phase 7 — Deployment
 
